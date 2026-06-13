@@ -32,8 +32,9 @@ CENTRAL OBSERVABILITY SERVER
 OpenTelemetry Collector ───────► HyperDX
 
 Promtail ──────────────────────► Loki ───────► Grafana
-
-Prometheus
+                                              ▲
+                                              │
+Prometheus ───────────────────────────────────┘
 ```
 
 ---
