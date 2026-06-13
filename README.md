@@ -1,38 +1,53 @@
-# Monitoring Platform
+Monitoring Platform
 
 Monitoring, logging and observability engineering project.
 
-## Overview
+Overview
 
-Repository containing automation scripts and OpenTelemetry configurations used for centralized log collection and observability.
+Repository containing automation scripts, OpenTelemetry configurations and observability stack setup for centralized log collection, metrics and traces.
 
-## Implemented
+The project was tested on real PM2-based applications generating HTTP access logs, application errors and runtime exceptions.
 
-### OpenTelemetry
+Implemented
+OpenTelemetry
+PM2 Collector
+PM2 log collection from multiple Node.js applications
+JSON log parsing and normalization
+OTLP export to observability backends
+HyperDX integration for centralized trace/log correlation
 
-#### PM2 Collector
+Data sources:
 
-* PM2 log collection
-* JSON log parsing
-* OTLP export
-* HyperDX integration
+teacher-client (frontend application)
+backoffice (admin panel)
+cms-web (CMS system)
+Next.js / PM2 based services
 
-#### .NET Collector
+Collected log types:
 
-* .NET application log collection
-* Centralized log aggregation
-* OTLP export
-* HyperDX integration
+HTTP access logs
+Application errors
+Runtime exceptions
+Process lifecycle events (restart, shutdown)
+.NET Collector
+.NET application log collection via OTLP
+Centralized log aggregation pipeline
+Structured logging support
+HyperDX integration
+HyperDX
+Automated deployment via Docker
+Production-ready installation scripts
+Environment-based configuration
+OTLP ingestion support
+Observability Stack
 
-### HyperDX
+The system provides unified observability across:
 
-* Automated deployment
-* Docker-based installation
-* Environment configuration
-
-## Repository Structure
-
-```
+Logs (Loki / HyperDX)
+Metrics (Prometheus)
+Dashboards (Grafana)
+Traces (OpenTelemetry)
+Repository Structure
 automation/
 └── hyperdx/
 
@@ -40,19 +55,18 @@ otel/
 ├── pm2/
 └── dotnet/
 
+grafana/
+logging/
+prometheus/
 docs/
-```
-
-## Technologies
-
-* OpenTelemetry
-* HyperDX
-* Docker
-* Linux
-* PM2
-* .NET
-* Bash
-
-## Status
-
-Active personal observability and monitoring project.
+Technologies
+OpenTelemetry
+HyperDX
+Grafana
+Loki
+Prometheus
+Docker
+Linux
+PM2
+.NET
+Bash
