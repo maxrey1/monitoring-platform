@@ -110,10 +110,11 @@ logging/loki-config.yaml
 
 Responsibilities:
 
-* Log ingestion
-* Telemetry processing
-* Attribute enrichment
-* Export to observability platforms
+* Remote telemetry collection
+* PM2 log ingestion
+* .NET telemetry ingestion
+* Log parsing and enrichment
+* OTLP export to HyperDX
 
 Implemented collectors:
 
