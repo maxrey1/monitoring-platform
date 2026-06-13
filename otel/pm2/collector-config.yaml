@@ -9,6 +9,7 @@ receivers:
       - type: json_parser
         parse_from: body
         parse_to: attributes
+        on_error: send
 
 processors:
   batch: {}
