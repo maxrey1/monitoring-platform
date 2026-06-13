@@ -17,21 +17,16 @@ The platform combines:
 ## Architecture
 
 ```text
+REMOTE APPLICATION SERVER
+
 Applications
      │
-     │ Logs / Metrics
-     ▼
-
-OpenTelemetry Collector
+     ├────────► OpenTelemetry Collector ─────► HyperDX
      │
-     ├── HyperDX
-     ├── Loki
-     └── Prometheus
-
-            │
-            ▼
-
-         Grafana
+     └────────► Promtail ────────────────────► Loki
+                                                   │
+                                                   ▼
+                                                Grafana
 ```
 
 ---
