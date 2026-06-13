@@ -41,24 +41,25 @@ Prometheus ───────────────────────
 
 ## Components
 
-Prometheus
+### Prometheus
 
 Responsibilities:
 
-Infrastructure metrics collection
-Linux server resource monitoring
-CPU utilization tracking
-Memory usage monitoring
-Grafana dashboard data source
+* Infrastructure metrics collection
+* Linux server resource monitoring
+* CPU utilization tracking
+* Memory usage monitoring
+* Grafana dashboard data source
 
 Used for:
 
-Server health monitoring
-Resource utilization analysis
-Infrastructure performance visualization
+* Server health monitoring
+* Resource utilization analysis
+* Infrastructure performance visualization
 
 Configuration:
 
+```text
 prometheus/prometheus.yml
 ```
 
