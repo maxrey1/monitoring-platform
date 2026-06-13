@@ -20,13 +20,20 @@ The platform combines:
 REMOTE APPLICATION SERVER
 
 Applications
-     │
-     ├────────► OpenTelemetry Collector ─────► HyperDX
-     │
-     └────────► Promtail ────────────────────► Loki
-                                                   │
-                                                   ▼
-                                                Grafana
+    │
+    ├── OpenTelemetry Collector ───────────────┐
+    │                                           │
+    └── Promtail ───────────────────────────────┤
+                                                │
+                                                ▼
+
+CENTRAL OBSERVABILITY SERVER
+
+OpenTelemetry Collector ───────► HyperDX
+
+Promtail ──────────────────────► Loki ───────► Grafana
+
+Prometheus
 ```
 
 ---
