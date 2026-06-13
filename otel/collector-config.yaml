@@ -1,0 +1,18 @@
+receivers:
+  filelog:
+    include:
+      - /var/log/*.log
+
+processors:
+  batch:
+
+exporters:
+  otlphttp/hyperdx:
+    endpoint: http://hyperdx:4318
+
+service:
+  pipelines:
+    logs:
+      receivers: [filelog]
+      processors: [batch]
+      exporters: [otlphttp/hyperdx]
