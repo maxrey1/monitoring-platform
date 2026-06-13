@@ -69,16 +69,18 @@ prometheus/prometheus.yml
 
 Responsibilities:
 
-* Infrastructure dashboards
-* Application dashboards
-* Observability visualization
+* Centralized log visualization
+* Application monitoring dashboards
+* Infrastructure metrics visualization
+* Operational troubleshooting
 
-Dashboard examples:
+Production dashboards:
 
-* Infrastructure Overview
-* Linux Server Monitoring
-* Application Logs
-* OpenTelemetry Metrics
+* Tivali
+* Backoffice
+* CSM
+* Student
+* Student Next
 
 Location:
 
