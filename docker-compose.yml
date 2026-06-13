@@ -1,5 +1,11 @@
 version: "3.9"
 
+networks:
+  monitoring:
+
+volumes:
+  grafana-storage:
+
 services:
 
   prometheus:
@@ -13,18 +19,26 @@ services:
     ports:
       - "9090:9090"
 
+    networks:
+      - monitoring
+
+
   loki:
     image: grafana/loki:latest
     container_name: loki
     restart: unless-stopped
 
-    command: -config.file=/etc/loki/local-config.yaml
+    command: -config.file=/etc/loki/config.yaml
 
     volumes:
-      - ./logging/loki-config.yaml:/etc/loki/local-config.yaml
+      - ./logging/loki-config.yaml:/etc/loki/config.yaml
 
     ports:
       - "3100:3100"
+
+    networks:
+      - monitoring
+
 
   grafana:
     image: grafana/grafana:latest
@@ -42,6 +56,15 @@ services:
       GF_SECURITY_ADMIN_USER: admin
       GF_SECURITY_ADMIN_PASSWORD: admin
 
+    volumes:
+      - grafana-storage:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+
+    networks:
+      - monitoring
+
+
   otel-pm2:
     image: otel/opentelemetry-collector-contrib:latest
     container_name: otel-pm2
@@ -54,6 +77,10 @@ services:
       - ./otel/pm2/collector-config.yaml:/etc/otel/config.yaml
       - /root/.pm2/logs:/pm2logs:ro
 
+    networks:
+      - monitoring
+
+
   otel-dotnet:
     image: otel/opentelemetry-collector-contrib:latest
     container_name: otel-dotnet
@@ -65,6 +92,10 @@ services:
     volumes:
       - ./otel/dotnet/collector-config.yaml:/etc/otel/config.yaml
 
+    networks:
+      - monitoring
+
+
   hyperdx:
     image: hyperdx/hyperdx-all-in-one:latest
     container_name: hyperdx
@@ -75,3 +106,6 @@ services:
 
     environment:
       HYPERDX_API_KEY: demo-api-key
+
+    networks:
+      - monitoring
