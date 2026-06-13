@@ -6,7 +6,7 @@ Monitoring, logging and observability engineering project.
 
 Repository containing automation scripts, OpenTelemetry configurations and observability stack setup for centralized log collection, metrics and traces.
 
-The project was tested on real PM2-based applications generating HTTP access logs, application errors and runtime exceptions.
+The project was validated using production application logs collected from multiple PM2-managed Node.js services
 
 ## Implemented
 
