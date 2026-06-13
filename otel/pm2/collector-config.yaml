@@ -1,7 +1,7 @@
 receivers:
   filelog:
     include:
-      - /var/log/pm2/*.log
+      - /pm2logs/*.log
 
     start_at: beginning
 
