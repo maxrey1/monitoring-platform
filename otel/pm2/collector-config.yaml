@@ -1,0 +1,36 @@
+receivers:
+  filelog:
+    include:
+      - /var/log/pm2/*.log
+
+    start_at: beginning
+
+    operators:
+      - type: json_parser
+        parse_from: body
+        parse_to: attributes
+
+processors:
+  batch: {}
+
+  resource:
+    attributes:
+      - key: service.name
+        value: pm2-service
+        action: insert
+
+exporters:
+  loki:
+    endpoint: http://loki:3100/loki/api/v1/push
+
+  otlp:
+    endpoint: hyperdx:4317
+    tls:
+      insecure: true
+
+service:
+  pipelines:
+    logs:
+      receivers: [filelog]
+      processors: [batch, resource]
+      exporters: [loki, otlp]
